@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="iRemedy Healthcare Companies — The distribution, technology, and logistics layer connecting domestic manufacturers to the point of care.">
+<meta property="og:title" content="iRemedy Healthcare Companies">
+<meta property="og:description" content="When pharmaceutical supply fails, people die. iRemedy exists so it doesn't.">
+<meta name="theme-color" content="#060d16">
+<title>iRemedy Healthcare Companies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #060d16;
+  --bg-2: #0a1420;
+  --bg-3: #0f1e30;
+  --teal: #4bb8d4;
+  --teal-dim: rgba(75,184,212,0.12);
+  --teal-glow: rgba(75,184,212,0.06);
+  --gold: #e8b84b;
+  --gold-dim: rgba(232,184,75,0.12);
+  --red: #e85d4b;
+  --white: #f0f4f8;
+  --white-dim: rgba(240,244,248,0.55);
+  --white-faint: rgba(240,244,248,0.2);
+  --border: rgba(75,184,212,0.12);
+  --border-2: rgba(240,244,248,0.06);
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 70px; }
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  cursor: none;
+}
+@media (hover: none) { body { cursor: auto; } #cursor, #cursor-ring { display: none; } }
+
+/* CURSOR */
+#cursor {
+  position: fixed; z-index: 9999; pointer-events: none;
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--teal); mix-blend-mode: screen;
+  transform: translate(-50%,-50%); transition: width .2s, height .2s, background .2s;
+}
+#cursor-ring {
+  position: fixed; z-index: 9998; pointer-events: none;
+  width: 34px; height: 34px; border-radius: 50%;
+  border: 1px solid rgba(75,184,212,0.35);
+  transform: translate(-50%,-50%); transition: transform .12s ease-out, width .3s, height .3s;
+}
+body:has(a:hover) #cursor, body:has(button:hover) #cursor { width: 18px; height: 18px; background: var(--gold); }
+body:has(a:hover) #cursor-ring, body:has(button:hover) #cursor-ring { width: 46px; height: 46px; }
+
+/* GRID */
+body::before {
+  content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image: linear-gradient(rgba(75,184,212,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(75,184,212,0.035) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+/* NAV */
+#nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5vw; height: 68px;
+  background: rgba(6,13,22,0.85); backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-brand {
+  font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700;
+  color: var(--teal); letter-spacing: 0.08em; text-decoration: none; cursor: none;
+}
+.nav-brand span { color: var(--white-dim); font-weight: 400; }
+.nav-links { display: flex; gap: 2.5rem; align-items: center; }
+.nav-links a {
+  font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--white-faint); text-decoration: none;
+  transition: color 0.2s; cursor: none; position: relative;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--teal); }
+.nav-links a.active::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: -4px;
+  height: 1px; background: var(--teal); border-radius: 1px;
+}
+.nav-cta {
+  font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--teal); text-decoration: none;
+  border: 1px solid rgba(75,184,212,0.35); border-radius: 3px;
+  padding: 0.45rem 1.1rem; transition: background 0.2s, border-color 0.2s; cursor: none;
+}
+.nav-cta:hover { background: var(--teal-dim); border-color: var(--teal); }
+@media (max-width: 768px) { .nav-links { display: none; } }
+@media (max-width: 480px) { .nav-cta { display: none; } }
+
+/* HERO */
+#hero {
+  position: relative; width: 100%; min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; padding: 8rem 5vw 6rem;
+}
+#hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+#hero::after {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 70% at 50% 50%, transparent 20%, rgba(6,13,22,0.65) 100%);
+  pointer-events: none; z-index: 2;
+}
+.hero-content { position: relative; z-index: 10; text-align: center; max-width: 1100px; }
+.hero-eyebrow {
+  font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.35em;
+  text-transform: uppercase; color: var(--teal); margin-bottom: 2rem;
+  opacity: 0; transform: translateY(14px); animation: fadeUp 0.9s 0.4s cubic-bezier(.22,1,.36,1) forwards;
+}
+.hero-headline {
+  font-family: var(--font-display); font-size: clamp(3.6rem, 9vw, 10rem);
+  line-height: 0.92; letter-spacing: 0.01em; text-transform: uppercase;
+  color: var(--white);
+  opacity: 0; transform: translateY(26px); animation: fadeUp 1s 0.65s cubic-bezier(.22,1,.36,1) forwards;
+}
+.hero-headline .accent { color: var(--teal); }
+.hero-sub {
+  margin: 2.2rem auto 0; font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+  font-weight: 300; color: var(--white-dim); max-width: 560px; line-height: 1.85;
+  opacity: 0; transform: translateY(14px); animation: fadeUp 0.9s 0.95s cubic-bezier(.22,1,.36,1) forwards;
+}
+.hero-actions {
+  margin-top: 3rem; display: flex; gap: 1.5rem; justify-content: center;
+  flex-wrap: wrap; align-items: center;
+  opacity: 0; transform: translateY(14px); animation: fadeUp 0.9s 1.2s cubic-bezier(.22,1,.36,1) forwards;
+}
+.btn-primary {
+  font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--bg); background: var(--teal);
+  border: none; padding: 0.85rem 2.2rem; border-radius: 3px; cursor: none;
+  text-decoration: none; transition: opacity 0.2s;
+}
+.btn-primary:hover { opacity: 0.85; }
+.btn-ghost {
+  font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--white-dim);
+  border: 1px solid var(--border-2); padding: 0.85rem 2.2rem; border-radius: 3px;
+  cursor: none; text-decoration: none; transition: border-color 0.2s, color 0.2s;
+}
+.btn-ghost:hover { border-color: var(--white-faint); color: var(--white); }
+.hero-scroll {
+  position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+  z-index: 10; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  opacity: 0; animation: fadeIn 1s 2.2s forwards;
+}
+.hero-scroll-line {
+  width: 1px; height: 42px;
+  background: linear-gradient(to bottom, var(--teal), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+.hero-scroll span {
+  font-family: var(--font-mono); font-size: 0.52rem; letter-spacing: 0.3em;
+  text-transform: uppercase; color: rgba(255,255,255,0.2);
+}
+.hero-stats {
+  position: absolute; bottom: 3.5rem; right: 4vw; z-index: 10;
+  display: flex; flex-direction: column; gap: 1.2rem; align-items: flex-end;
+  opacity: 0; animation: fadeIn 1s 1.8s forwards;
+}
+.hero-stat-num {
+  font-family: var(--font-display); font-size: 2.2rem; line-height: 1;
+  color: var(--white); text-align: right;
+}
+.hero-stat-label {
+  font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--teal); text-align: right; margin-top: 0.15rem;
+}
+@media (max-width: 768px) { .hero-stats { display: none; } }
+
+/* SECTIONS */
+section { padding: 7rem 5vw; position: relative; z-index: 1; }
+.section-inner { max-width: 1200px; margin: 0 auto; }
+.section-tag {
+  font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.35em;
+  text-transform: uppercase; color: var(--teal); margin-bottom: 1.5rem;
+  display: flex; align-items: center; gap: 0.85rem;
+}
+.section-tag::before {
+  content: ''; display: inline-block; width: 1.75rem; height: 1px; background: var(--teal);
+}
+.section-headline {
+  font-family: var(--font-display); font-size: clamp(2.4rem, 5vw, 4.5rem);
+  line-height: 0.95; letter-spacing: 0.01em; text-transform: uppercase;
+  margin-bottom: 1.75rem;
+}
+.section-headline .accent { color: var(--teal); }
+.section-lead {
+  font-size: clamp(0.95rem, 1.3vw, 1.05rem); font-weight: 300;
+  color: var(--white-dim); max-width: 580px; line-height: 1.8; margin-bottom: 3rem;
+}
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s, transform 0.7s; }
+.reveal.up { opacity: 1; transform: none; }
+.reveal-left { opacity: 0; transform: translateX(-20px); transition: opacity 0.7s, transform 0.7s; }
+.reveal-left.up { opacity: 1; transform: none; }
+
+/* PROBLEM */
+#problem { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%); }
+.problem-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+}
+@media (max-width: 860px) { .problem-grid { grid-template-columns: 1fr; gap: 3rem; } }
+.problem-quote {
+  font-family: var(--font-display); font-size: clamp(1.4rem, 2.5vw, 2rem);
+  line-height: 1.25; letter-spacing: 0.01em; text-transform: uppercase;
+  color: var(--white); margin-bottom: 1.5rem; border-left: 2px solid var(--teal);
+  padding-left: 1.5rem;
+}
+.problem-body { font-size: 0.9rem; color: var(--white-dim); line-height: 1.85; }
+.stat-stack { display: flex; flex-direction: column; gap: 1.5rem; }
+.stat-item {
+  background: var(--bg-3); border: 1px solid var(--border);
+  border-radius: 8px; padding: 1.5rem 1.75rem;
+  border-left: 3px solid var(--teal);
+}
+.stat-item.red { border-left-color: var(--red); }
+.stat-item.gold { border-left-color: var(--gold); }
+.stat-num {
+  font-family: var(--font-display); font-size: 2.8rem; line-height: 1;
+  color: var(--white); margin-bottom: 0.35rem;
+}
+.stat-num .accent { color: var(--teal); }
+.stat-num .red { color: var(--red); }
+.stat-num .gold { color: var(--gold); }
+.stat-label { font-size: 0.8rem; color: var(--white-dim); line-height: 1.5; }
+
+/* PLATFORM */
+#platform { background: var(--bg-2); }
+.platform-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+}
+@media (max-width: 860px) { .platform-grid { grid-template-columns: 1fr; gap: 3rem; } }
+.capability-list { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 2rem; }
+.capability-item {
+  display: flex; align-items: flex-start; gap: 1.25rem;
+  background: var(--bg-3); border: 1px solid var(--border);
+  border-radius: 8px; padding: 1.25rem 1.5rem;
+  transition: border-color 0.25s;
+}
+.capability-item:hover { border-color: rgba(75,184,212,0.3); }
+.cap-num {
+  font-family: var(--font-mono); font-size: 0.6rem; color: var(--teal);
+  letter-spacing: 0.15em; padding-top: 0.15rem; flex-shrink: 0;
+}
+.cap-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.2rem; }
+.cap-body { font-size: 0.8rem; color: var(--white-dim); line-height: 1.6; }
+
+/* TERMINAL */
+.terminal-wrap { position: relative; }
+.terminal {
+  background: #080f1a; border: 1px solid rgba(75,184,212,0.2);
+  border-radius: 6px; overflow: hidden;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(75,184,212,0.05);
+}
+.terminal-bar {
+  background: #0d1825; padding: 0.7rem 1rem;
+  display: flex; align-items: center; gap: 0.5rem;
+  border-bottom: 1px solid rgba(75,184,212,0.1);
+}
+.t-dot { width: 10px; height: 10px; border-radius: 50%; }
+.t-dot.red { background: #e85d4b; }
+.t-dot.yellow { background: #e8b84b; }
+.t-dot.green { background: #4be88a; }
+.terminal-title {
+  font-family: var(--font-mono); font-size: 0.6rem; color: rgba(240,244,248,0.3);
+  letter-spacing: 0.12em; margin-left: 0.5rem;
+}
+.terminal-body { padding: 1.25rem 1.5rem; font-family: var(--font-mono); font-size: 0.72rem; line-height: 1.9; }
+.t-line { display: flex; gap: 0.75rem; align-items: baseline; }
+.t-prompt { color: var(--teal); flex-shrink: 0; }
+.t-cmd { color: rgba(240,244,248,0.85); }
+.t-out { color: rgba(240,244,248,0.4); padding-left: 1.25rem; }
+.t-out.success { color: #4be88a; }
+.t-out.warn { color: var(--gold); }
+.t-out.info { color: var(--teal); }
+.t-out.red { color: var(--red); }
+.t-spacer { height: 0.5rem; }
+.t-cursor { display: inline-block; width: 7px; height: 13px; background: var(--teal); animation: blink 1s step-end infinite; vertical-align: middle; }
+
+/* MONITOR — live activity feed */
+.monitor {
+  background: #080f1a; border: 1px solid rgba(75,184,212,0.18);
+  border-radius: 6px; overflow: hidden; margin-top: 1.5rem;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+.monitor-bar {
+  background: #0d1825; padding: 0.6rem 1rem;
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid rgba(75,184,212,0.1);
+}
+.monitor-title {
+  font-family: var(--font-mono); font-size: 0.58rem; color: var(--teal);
+  letter-spacing: 0.15em; text-transform: uppercase;
+}
+.monitor-live {
+  display: flex; align-items: center; gap: 0.4rem;
+  font-family: var(--font-mono); font-size: 0.55rem; color: #4be88a; letter-spacing: 0.1em;
+}
+.live-dot {
+  width: 6px; height: 6px; border-radius: 50%; background: #4be88a;
+  animation: livePulse 1.5s ease-in-out infinite;
+}
+.monitor-body { padding: 0.75rem 1rem; }
+.feed-item {
+  display: flex; align-items: baseline; gap: 0.75rem;
+  padding: 0.35rem 0; border-bottom: 1px solid rgba(255,255,255,0.03);
+  font-family: var(--font-mono); font-size: 0.65rem;
+  opacity: 0; animation: feedIn 0.4s forwards;
+}
+.feed-item:last-child { border-bottom: none; }
+.feed-ts { color: rgba(240,244,248,0.25); flex-shrink: 0; min-width: 45px; }
+.feed-tag {
+  flex-shrink: 0; padding: 0.1rem 0.4rem; border-radius: 2px;
+  font-size: 0.55rem; letter-spacing: 0.08em; text-transform: uppercase;
+}
+.tag-order { background: rgba(75,184,212,0.12); color: var(--teal); }
+.tag-coo { background: rgba(232,184,75,0.12); color: var(--gold); }
+.tag-alert { background: rgba(232,93,75,0.12); color: var(--red); }
+.tag-route { background: rgba(75,232,138,0.1); color: #4be88a; }
+.tag-intake { background: rgba(75,184,212,0.08); color: rgba(75,184,212,0.7); }
+.feed-msg { color: rgba(240,244,248,0.65); flex: 1; }
+
+/* DISTRIBUTION */
+#distribution { background: var(--bg); }
+.dist-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+}
+@media (max-width: 860px) { .dist-grid { grid-template-columns: 1fr; gap: 3rem; } }
+.dist-map {
+  position: relative; background: var(--bg-3);
+  border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
+  aspect-ratio: 16/10;
+}
+.dist-map-bg {
+  width: 100%; height: 100%; background:
+    radial-gradient(ellipse 120% 80% at 50% 50%, rgba(75,184,212,0.04) 0%, transparent 70%);
+}
+.dist-map canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.dist-map-label {
+  position: absolute; bottom: 1rem; left: 1rem;
+  font-family: var(--font-mono); font-size: 0.55rem; color: var(--teal);
+  letter-spacing: 0.15em; text-transform: uppercase;
+  background: rgba(6,13,22,0.8); padding: 0.3rem 0.6rem; border-radius: 3px;
+}
+.dist-points { display: flex; flex-direction: column; gap: 1.25rem; }
+.dist-point {
+  display: flex; align-items: flex-start; gap: 1rem;
+  padding: 1.25rem; background: var(--bg-3); border: 1px solid var(--border);
+  border-radius: 8px; transition: border-color 0.25s;
+}
+.dist-point:hover { border-color: rgba(75,184,212,0.3); }
+.dist-icon {
+  font-family: var(--font-mono); font-size: 0.6rem; color: var(--teal);
+  padding-top: 0.2rem; flex-shrink: 0; letter-spacing: 0.1em;
+}
+.dist-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.2rem; }
+.dist-body { font-size: 0.8rem; color: var(--white-dim); line-height: 1.6; }
+
+/* TECHNOLOGY */
+#technology { background: var(--bg-2); }
+.tech-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+}
+@media (max-width: 860px) { .tech-grid { grid-template-columns: 1fr; gap: 3rem; } }
+.patent-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
+.patent-chip {
+  font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.1em;
+  color: rgba(75,184,212,0.7); background: rgba(75,184,212,0.06);
+  border: 1px solid rgba(75,184,212,0.15); border-radius: 3px;
+  padding: 0.3rem 0.65rem; transition: border-color 0.2s, color 0.2s;
+}
+.patent-chip:hover { border-color: rgba(75,184,212,0.4); color: var(--teal); }
+
+/* LOGISTICS */
+#logistics { background: var(--bg); }
+.logistics-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+}
+@media (max-width: 860px) { .logistics-grid { grid-template-columns: 1fr; gap: 3rem; } }
+.logistics-stats {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem;
+}
+.log-stat {
+  background: var(--bg-3); border: 1px solid var(--border);
+  border-radius: 8px; padding: 1.25rem;
+}
+.log-stat-num {
+  font-family: var(--font-display); font-size: 2rem; color: var(--teal);
+  line-height: 1; margin-bottom: 0.3rem;
+}
+.log-stat-label { font-size: 0.75rem; color: var(--white-dim); line-height: 1.4; }
+.incubator-card {
+  background: var(--bg-3); border: 1px solid var(--border);
+  border-left: 3px solid var(--gold); border-radius: 8px; padding: 1.5rem;
+  margin-top: 1.5rem;
+}
+.incubator-tag {
+  font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem;
+}
+.incubator-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+.incubator-body { font-size: 0.82rem; color: var(--white-dim); line-height: 1.7; }
+.partner-badge {
+  display: inline-flex; align-items: center; gap: 0.6rem; margin-top: 1rem;
+  background: rgba(240,244,248,0.04); border: 1px solid var(--border-2);
+  border-radius: 4px; padding: 0.5rem 0.85rem;
+  font-family: var(--font-mono); font-size: 0.62rem; color: var(--white-dim);
+  letter-spacing: 0.08em;
+}
+.partner-badge::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--teal);
+}
+
+/* GOVERNMENT */
+#government {
+  background: linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 100%);
+}
+.gov-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+}
+@media (max-width: 860px) { .gov-grid { grid-template-columns: 1fr; gap: 3rem; } }
+.testimony-block {
+  background: var(--bg-3); border: 1px solid var(--border);
+  border-left: 3px solid var(--gold); border-radius: 8px; padding: 1.75rem;
+  margin-bottom: 1.25rem;
+}
+.testimony-quote {
+  font-size: 0.95rem; font-style: italic; color: var(--white-dim);
+  line-height: 1.75; margin-bottom: 1rem;
+}
+.testimony-attr {
+  font-family: var(--font-mono); font-size: 0.6rem; color: var(--gold);
+  letter-spacing: 0.12em; text-transform: uppercase;
+}
+.gov-credentials { display: flex; flex-direction: column; gap: 0.75rem; }
+.gov-cred {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 0.85rem 1.25rem; background: var(--bg-3);
+  border: 1px solid var(--border); border-radius: 6px;
+}
+.gov-cred-icon {
+  font-family: var(--font-mono); font-size: 0.7rem; color: var(--teal);
+  flex-shrink: 0; width: 20px; text-align: center;
+}
+.gov-cred-text { font-size: 0.82rem; color: var(--white-dim); line-height: 1.4; }
+.gov-cred-text strong { color: var(--white); font-weight: 600; }
+
+/* CONTACT */
+#contact { background: var(--bg); text-align: center; }
+.contact-inner { max-width: 680px; margin: 0 auto; }
+.contact-headline {
+  font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 0.95; text-transform: uppercase; margin-bottom: 1.5rem;
+}
+.contact-headline .accent { color: var(--teal); }
+.contact-body { font-size: 0.95rem; color: var(--white-dim); line-height: 1.8; margin-bottom: 2.5rem; }
+.contact-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 3rem;
+}
+@media (max-width: 600px) { .contact-grid { grid-template-columns: 1fr; } }
+.contact-card {
+  background: var(--bg-3); border: 1px solid var(--border);
+  border-radius: 8px; padding: 1.5rem; text-align: left;
+  transition: border-color 0.25s;
+}
+.contact-card:hover { border-color: rgba(75,184,212,0.3); }
+.contact-card-tag {
+  font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--teal); margin-bottom: 0.5rem;
+}
+.contact-card-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.4rem; }
+.contact-card-body { font-size: 0.78rem; color: var(--white-dim); line-height: 1.6; }
+
+/* FOOTER */
+footer {
+  position: relative; z-index: 1;
+  border-top: 1px solid var(--border-2);
+  padding: 2.5rem 5vw;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+}
+.footer-brand {
+  font-family: var(--font-mono); font-size: 0.75rem; color: var(--teal);
+  letter-spacing: 0.1em;
+}
+.footer-copy { font-size: 0.72rem; color: rgba(240,244,248,0.2); font-family: var(--font-mono); }
+
+/* DIVIDER */
+.section-divider {
+  max-width: 1200px; margin: 0 auto;
+  height: 1px; background: linear-gradient(90deg, transparent, rgba(75,184,212,0.12), transparent);
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes scrollPulse { 0%,100% { opacity: 0.3; } 50% { opacity: 1; } }
+@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+@keyframes livePulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.8); } }
+@keyframes feedIn { from { opacity: 0; transform: translateX(-6px); } to { opacity: 1; transform: none; } }
+</style>
+</head>
+<body>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-brand" href="#">iREMEDY<span>.com</span></a>
+  <div class="nav-links">
+    <a href="#problem">The Problem</a>
+    <a href="#platform">Platform</a>
+    <a href="#distribution">Distribution</a>
+    <a href="#technology">Technology</a>
+    <a href="#logistics">Logistics</a>
+    <a href="#government">Government</a>
+  </div>
+  <a class="nav-cta" href="#contact">Engage</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-content">
+    <div class="hero-eyebrow">// iRemedy Healthcare Companies — Est. 2007</div>
+    <h1 class="hero-headline">The Chain<br><span class="accent">America Runs On.</span></h1>
+    <p class="hero-sub">Medical supply doesn't fail by accident. It fails by design — built for cost, not continuity. iRemedy is the platform that routes around the break: distribution, procurement intelligence, and logistics in a single, compliance-native stack.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#platform">Explore the Platform</a>
+      <a class="btn-ghost" href="#problem">The Stakes</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num">50</div>
+      <div class="hero-stat-label">State Licensed</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">10</div>
+      <div class="hero-stat-label">US Patents</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">Est. '07</div>
+      <div class="hero-stat-label">Founded</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="section-inner">
+    <div class="problem-grid">
+      <div class="reveal-left">
+        <div class="section-tag">01 — The Problem</div>
+        <div class="problem-quote">The system was never designed to hold.</div>
+        <p class="problem-body">Drug shortages are not disruptions. They are the expected output of a supply chain optimized for cost over continuity. Foreign API dependency, price opacity, and absent domestic manufacturing haven't created a fragile system — they are the system. iRemedy exists at the inflection point where that changes.</p>
+      </div>
+      <div class="stat-stack reveal">
+        <div class="stat-item red">
+          <div class="stat-num"><span class="red">&lt;10%</span></div>
+          <div class="stat-label">Of active pharmaceutical ingredients consumed in the U.S. are manufactured domestically</div>
+        </div>
+        <div class="stat-item gold">
+          <div class="stat-num"><span class="gold">90%+</span></div>
+          <div class="stat-label">Of U.S. pharmaceutical supply originates from foreign manufacturing, primarily China and India</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num"><span class="accent">300+</span></div>
+          <div class="stat-label">Active drug shortages reported at any given time — a structural condition, not an anomaly</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORM -->
+<section id="platform">
+  <div class="section-inner">
+    <div class="platform-grid">
+      <div>
+        <div class="section-tag reveal">02 — The Platform</div>
+        <h2 class="section-headline reveal">One Stack.<br><span class="accent">Every Layer.</span></h2>
+        <p class="section-lead reveal">Not a marketplace. Not a distributor. Not a software vendor. A single integrated platform that handles distribution, technology, and logistics — designed for the way healthcare actually moves.</p>
+        <div class="capability-list reveal">
+          <div class="capability-item">
+            <div class="cap-num">01</div>
+            <div><div class="cap-title">iRemedy Direct</div><div class="cap-body">50-state licensed pharmaceutical wholesale distribution. NABP-accredited. Direct to provider, direct to patient.</div></div>
+          </div>
+          <div class="capability-item">
+            <div class="cap-num">02</div>
+            <div><div class="cap-title">MetaCommerceRx</div><div class="cap-body">AI-powered procurement. Normalizes 500K+ products across fragmented catalogs. No custom API required.</div></div>
+          </div>
+          <div class="capability-item">
+            <div class="cap-num">03</div>
+            <div><div class="cap-title">TradeSpy.ai</div><div class="cap-body">Country-of-origin intelligence platform. Tracks actual drug manufacturing origins across 29,000+ NDCs.</div></div>
+          </div>
+          <div class="capability-item">
+            <div class="cap-num">04</div>
+            <div><div class="cap-title">Incubator Program</div><div class="cap-body">Full-stack commercialization for manufacturers entering U.S. distribution. From regulatory to last-mile delivery.</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <!-- LIVE TERMINAL -->
+        <div class="terminal">
+          <div class="terminal-bar">
+            <div class="t-dot red"></div>
+            <div class="t-dot yellow"></div>
+            <div class="t-dot green"></div>
+            <div class="terminal-title">iremedy-platform — metacommercerx</div>
+          </div>
+          <div class="terminal-body">
+            <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd">platform status --all</span></div>
+            <div class="t-spacer"></div>
+            <div class="t-line"><span class="t-out info">▶ MetaCommerceRx       ONLINE</span></div>
+            <div class="t-line"><span class="t-out info">▶ TradeSpy.ai          ONLINE</span></div>
+            <div class="t-line"><span class="t-out info">▶ iRemedy Direct       ACTIVE — 50 states</span></div>
+            <div class="t-line"><span class="t-out info">▶ DSCSA Engine         COMPLIANT</span></div>
+            <div class="t-spacer"></div>
+            <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd">run --task "normalize catalog --source mckesson_export.csv"</span></div>
+            <div class="t-line"><span class="t-out">→ Loading 487,203 line items...</span></div>
+            <div class="t-line"><span class="t-out">→ Resolving product identities...</span></div>
+            <div class="t-line"><span class="t-out success">✓ 487,203 SKUs normalized  [4.2s]</span></div>
+            <div class="t-line"><span class="t-out success">✓ 31,450 duplicate identities resolved</span></div>
+            <div class="t-line"><span class="t-out warn">⚠ 847 items flagged — foreign API origin unverified</span></div>
+            <div class="t-spacer"></div>
+            <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd">route --order RX-2026-00447 --priority urgent</span></div>
+            <div class="t-line"><span class="t-out">→ Verifying DEA license: 012-AX-4471...</span></div>
+            <div class="t-line"><span class="t-out success">✓ License valid</span></div>
+            <div class="t-line"><span class="t-out success">✓ Routed → iRemedy Direct / UPS Healthcare</span></div>
+            <div class="t-line"><span class="t-out info">  ETA: 2026-04-14  |  cold chain: confirmed</span></div>
+            <div class="t-spacer"></div>
+            <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd cursor-line">_<span class="t-cursor"></span></span></div>
+          </div>
+        </div>
+        <!-- LIVE MONITOR -->
+        <div class="monitor" id="activity-monitor">
+          <div class="monitor-bar">
+            <div class="monitor-title">Platform Activity Feed</div>
+            <div class="monitor-live"><div class="live-dot"></div>LIVE</div>
+          </div>
+          <div class="monitor-body" id="feed-body">
+            <!-- populated by JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DISTRIBUTION -->
+<section id="distribution">
+  <div class="section-inner">
+    <div class="dist-grid">
+      <div>
+        <div class="section-tag reveal">03 — Distribution</div>
+        <h2 class="section-headline reveal">Direct.<br><span class="accent">50 States.</span></h2>
+        <p class="section-lead reveal">iRemedy Direct moves regulated pharmaceutical products from manufacturer to point of care — without the middlemen, without the markup, without the opacity that has defined the industry for decades.</p>
+        <div class="dist-points reveal">
+          <div class="dist-point">
+            <div class="dist-icon">01</div>
+            <div><div class="dist-title">iRemedy Direct</div><div class="dist-body">50-state licensed, NABP-accredited pharmaceutical wholesale distribution. Controlled substances under DEA. Full serialization and DSCSA compliance native to every transaction.</div></div>
+          </div>
+          <div class="dist-point">
+            <div class="dist-icon">02</div>
+            <div><div class="dist-title">Distributor-as-a-Service</div><div class="dist-body">Manufacturers without full U.S. distribution licensure use iRemedy as the regulatory pass-through. We hold the license. You own the customer relationship.</div></div>
+          </div>
+          <div class="dist-point">
+            <div class="dist-icon">03</div>
+            <div><div class="dist-title">Direct-to-Patient / Direct-to-Provider</div><div class="dist-body">Last-mile fulfillment to 95% of the U.S. population. Specialty, cold chain, controlled substance capable across all channels.</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="dist-map">
+          <div class="dist-map-bg"></div>
+          <canvas id="dist-canvas"></canvas>
+          <div class="dist-map-label">// 50-STATE DISTRIBUTION NETWORK</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-top:0.75rem">
+          <div class="log-stat">
+            <div class="log-stat-num">50</div>
+            <div class="log-stat-label">State pharmaceutical licenses active</div>
+          </div>
+          <div class="log-stat">
+            <div class="log-stat-num">NABP</div>
+            <div class="log-stat-label">Accredited wholesale distributor</div>
+          </div>
+          <div class="log-stat">
+            <div class="log-stat-num">DEA</div>
+            <div class="log-stat-label">Controlled substance licensed</div>
+          </div>
+          <div class="log-stat">
+            <div class="log-stat-num">DSCSA</div>
+            <div class="log-stat-label">Serialization compliant — every order</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNOLOGY -->
+<section id="technology">
+  <div class="section-inner">
+    <div class="tech-grid">
+      <div class="reveal">
+        <!-- COO/TradeSpy terminal -->
+        <div class="terminal">
+          <div class="terminal-bar">
+            <div class="t-dot red"></div>
+            <div class="t-dot yellow"></div>
+            <div class="t-dot green"></div>
+            <div class="terminal-title">tradespy.ai — coo-intelligence-pipeline</div>
+          </div>
+          <div class="terminal-body">
+            <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd">tradespy scan --drug "semaglutide" --full</span></div>
+            <div class="t-spacer"></div>
+            <div class="t-line"><span class="t-out">→ FDA labeler record: Novo Nordisk A/S (US)</span></div>
+            <div class="t-line"><span class="t-out warn">⚠ Actual API origin: Daewoong Pharmaceutical, KR</span></div>
+            <div class="t-line"><span class="t-out warn">⚠ Upstream API source: Zhejiang Huahai, CN (68%)</span></div>
+            <div class="t-line"><span class="t-out red">✗ COO conflict — foreign origin ≥80% threshold</span></div>
+            <div class="t-spacer"></div>
+            <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd">run --batch national_formulary --drugs 2009</span></div>
+            <div class="t-line"><span class="t-out">→ Processing batch: 2,009 NDCs</span></div>
+            <div class="t-line"><span class="t-out success">✓ 1,847 resolved  [autoloop: 6 agents]</span></div>
+            <div class="t-line"><span class="t-out warn">⚠ 412 flagged — CCP supply chain exposure confirmed</span></div>
+            <div class="t-line"><span class="t-out red">✗ 89 critical — Hormuz disruption risk: HIGH</span></div>
+            <div class="t-spacer"></div>
+            <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd cursor-line">_<span class="t-cursor"></span></span></div>
+          </div>
+        </div>
+        <div class="patent-chips" style="margin-top:1rem">
+          <div class="patent-chip">US 12,468,774</div>
+          <div class="patent-chip">US 11,983,236</div>
+          <div class="patent-chip">US 12,332,966</div>
+          <div class="patent-chip">US 11,860,967</div>
+          <div class="patent-chip">US 11,640,440</div>
+          <div class="patent-chip">US 11,416,575</div>
+          <div class="patent-chip">US 11,568,019</div>
+          <div class="patent-chip">US 11,580,190</div>
+          <div class="patent-chip">US 12,259,940</div>
+          <div class="patent-chip">US 12,326,913</div>
+        </div>
+      </div>
+      <div>
+        <div class="section-tag reveal">04 — Technology</div>
+        <h2 class="section-headline reveal">The Intelligence<br><span class="accent">Layer.</span></h2>
+        <p class="section-lead reveal">MetaCommerceRx automates procurement across fragmented supplier catalogs. TradeSpy.ai maps the actual manufacturing origin of every drug in the national formulary — not the FDA label, the real origin. Both run on a 10-patent AI automation stack.</p>
+        <div class="capability-list reveal">
+          <div class="capability-item">
+            <div class="cap-num">MCRx</div>
+            <div><div class="cap-title">MetaCommerceRx</div><div class="cap-body">Normalizes 500K+ products. Resolves SKU identity conflicts. Routes orders. Enforces DEA/FDA license verification — automatically, on every transaction.</div></div>
+          </div>
+          <div class="capability-item">
+            <div class="cap-num">TSpy</div>
+            <div><div class="cap-title">TradeSpy.ai</div><div class="cap-body">6-agent AI pipeline mapping country-of-origin for 29,000+ NDCs. Surfaces CCP supply chain exposure. Built for CMS, OMB, and procurement compliance.</div></div>
+          </div>
+          <div class="capability-item">
+            <div class="cap-num">IP</div>
+            <div><div class="cap-title">10 Granted U.S. Patents</div><div class="cap-body">Co-invented by Tony Paquin and Jim Harding — the inventor behind Amazon Marketplace's original reseller technology. The full automation stack is protected.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGISTICS -->
+<section id="logistics">
+  <div class="section-inner">
+    <div class="logistics-grid">
+      <div>
+        <div class="section-tag reveal">05 — Logistics</div>
+        <h2 class="section-headline reveal">The Physical<br><span class="accent">Backbone.</span></h2>
+        <p class="section-lead reveal">Distribution requires more than a license. It requires the physical infrastructure to fulfill at scale — cold chain, controlled substance handling, last-mile reach, and GDP-compliant warehousing. iRemedy delivers through a strategic partnership with UPS Healthcare.</p>
+        <div class="logistics-stats reveal">
+          <div class="log-stat">
+            <div class="log-stat-num">18M+</div>
+            <div class="log-stat-label">Sq ft cGMP/GDP warehouse space</div>
+          </div>
+          <div class="log-stat">
+            <div class="log-stat-num">95%</div>
+            <div class="log-stat-label">U.S. population within 1-2 day reach</div>
+          </div>
+          <div class="log-stat">
+            <div class="log-stat-num">200+</div>
+            <div class="log-stat-label">Countries in global logistics network</div>
+          </div>
+          <div class="log-stat">
+            <div class="log-stat-num">24/7</div>
+            <div class="log-stat-label">Cold chain monitoring and chain of custody</div>
+          </div>
+        </div>
+        <div class="partner-badge reveal">UPS Healthcare — Strategic 3PL Partner</div>
+      </div>
+      <div class="reveal">
+        <div class="incubator-card">
+          <div class="incubator-tag">On-Ramp Program</div>
+          <div class="incubator-title">Domestic Manufacturing Incubator</div>
+          <div class="incubator-body">For manufacturers entering U.S. healthcare distribution — domestic or international. iRemedy provides the regulatory coverage, warehousing, order management, and technology to get to market without building the stack from scratch. Domestic reshoring. Foreign market entry. FDA registration to first-order fulfillment: weeks, not years.</div>
+        </div>
+        <div class="incubator-card" style="margin-top:1rem; border-left-color: var(--teal);">
+          <div class="incubator-tag" style="color:var(--teal)">Global Distribution</div>
+          <div class="incubator-title">Import & International Sourcing</div>
+          <div class="incubator-body">iRemedy operates on both sides of the reshoring equation. While we prioritize domestic manufacturing, our logistics infrastructure supports international sourcing — including cold chain import, customs clearance support, and U.S. distribution entry for foreign manufacturers seeking U.S. market access.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GOVERNMENT -->
+<section id="government">
+  <div class="section-inner">
+    <div class="gov-grid">
+      <div>
+        <div class="section-tag reveal">06 — Government &amp; Policy</div>
+        <h2 class="section-headline reveal">Where Policy<br><span class="accent">Meets the Chain.</span></h2>
+        <p class="section-lead reveal">iRemedy has a seat at the table where healthcare supply chain policy is being made. Not as a lobbyist — as the company that has been building the answer while everyone else was describing the problem.</p>
+        <div class="testimony-block reveal">
+          <div class="testimony-quote">"The United States cannot continue to depend on adversarial nations for the medications Americans need to survive. This is not a supply chain challenge. It is a national security emergency."</div>
+          <div class="testimony-attr">— Tony Paquin, CEO · U.S. Senate Special Committee on Aging</div>
+        </div>
+      </div>
+      <div class="gov-credentials reveal">
+        <div class="gov-cred"><div class="gov-cred-icon">▲</div><div class="gov-cred-text"><strong>U.S. Senate Testimony</strong> — Tony Paquin testified before the Senate Special Committee on Aging on pharmaceutical supply chain vulnerability</div></div>
+        <div class="gov-cred"><div class="gov-cred-icon">▲</div><div class="gov-cred-text"><strong>White House Briefing</strong> — Briefed the White House Made in America Office on domestic API supply chain data gaps</div></div>
+        <div class="gov-cred"><div class="gov-cred-icon">▲</div><div class="gov-cred-text"><strong>Operation Warp Speed</strong> — Delivered 500M+ needles and syringes under the federal COVID-19 emergency contract</div></div>
+        <div class="gov-cred"><div class="gov-cred-icon">▲</div><div class="gov-cred-text"><strong>SAMS Coalition</strong> — Founding member of the Supply Chain Assurance and Manufacturing Security coalition for domestic reshoring policy</div></div>
+        <div class="gov-cred"><div class="gov-cred-icon">▲</div><div class="gov-cred-text"><strong>CMS Comment Record</strong> — Submitted formal comment to CMS ANPRM on GPO incentive inversion and self-attestation inadequacy</div></div>
+        <div class="gov-cred"><div class="gov-cred-icon">▲</div><div class="gov-cred-text"><strong>TradeSpy.ai</strong> — Built as the intelligence layer for government procurement compliance and Buy America verification</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="section-tag reveal" style="justify-content:center">07 — Engage</div>
+    <h2 class="contact-headline reveal">Work with the<br><span class="accent">Platform.</span></h2>
+    <p class="contact-body reveal">Whether you're entering U.S. distribution, sourcing at scale, or building a procurement strategy that doesn't depend on foreign supply chains — the conversation starts here.</p>
+    <div class="contact-grid reveal">
+      <div class="contact-card">
+        <div class="contact-card-tag">Manufacturers</div>
+        <div class="contact-card-title">Entering U.S. Distribution</div>
+        <div class="contact-card-body">Domestic or international. FDA-registered or in process. We handle the regulatory, logistics, and technology stack so you can focus on the product.</div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-tag">Providers &amp; Buyers</div>
+        <div class="contact-card-title">Procurement That Performs</div>
+        <div class="contact-card-body">Hospitals, health systems, pharmacies. Access the full catalog through MetaCommerceRx — normalized, compliant, price-transparent.</div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-tag">Government</div>
+        <div class="contact-card-title">Policy &amp; Intelligence</div>
+        <div class="contact-card-body">GSA, VA, federal procurement. TradeSpy.ai for Buy America verification. Supply chain resilience data for policy and contracting decisions.</div>
+      </div>
+    </div>
+    <div style="margin-top:2.5rem" class="reveal">
+      <a class="btn-primary" href="mailto:sales@iremedy.com">sales@iremedy.com</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">iREMEDY HEALTHCARE COMPANIES, INC.</div>
+  <div class="footer-copy">© 2026 · 7118 S. Kanner Hwy, Stuart FL 34997 · Confidential</div>
+</footer>
+
+<script>
+// CURSOR
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+let cx = 0, cy = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => { cx = e.clientX; cy = e.clientY; });
+(function animCursor() {
+  rx += (cx-rx)*0.12; ry += (cy-ry)*0.12;
+  cursor.style.left = cx+'px'; cursor.style.top = cy+'px';
+  ring.style.left = rx+'px'; ring.style.top = ry+'px';
+  requestAnimationFrame(animCursor);
+})();
+
+// HERO CANVAS — particle field
+const hc = document.getElementById('hero-canvas');
+const hctx = hc.getContext('2d');
+function resizeHero() { hc.width = hc.offsetWidth; hc.height = hc.offsetHeight; }
+resizeHero();
+window.addEventListener('resize', resizeHero);
+const pts = Array.from({length:70}, () => ({
+  x: Math.random()*hc.width, y: Math.random()*hc.height,
+  vx: (Math.random()-.5)*.35, vy: (Math.random()-.5)*.35,
+  r: Math.random()*1.2+0.4, c: Math.random()>.5 ? '75,184,212' : '232,184,75'
+}));
+(function drawHero() {
+  hctx.clearRect(0,0,hc.width,hc.height);
+  pts.forEach(p => {
+    p.x += p.vx; p.y += p.vy;
+    if (p.x<0||p.x>hc.width) p.vx*=-1;
+    if (p.y<0||p.y>hc.height) p.vy*=-1;
+    hctx.beginPath(); hctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    hctx.fillStyle=`rgba(${p.c},0.55)`; hctx.fill();
+  });
+  pts.forEach((p,i) => pts.slice(i+1).forEach(q => {
+    const d=Math.hypot(p.x-q.x,p.y-q.y);
+    if(d<110){ hctx.beginPath(); hctx.moveTo(p.x,p.y); hctx.lineTo(q.x,q.y);
+      hctx.strokeStyle=`rgba(75,184,212,${0.1*(1-d/110)})`; hctx.lineWidth=.5; hctx.stroke(); }
+  }));
+  requestAnimationFrame(drawHero);
+})();
+
+// DISTRIBUTION MAP CANVAS — dot pulse network
+// DISTRIBUTION MAP — SVG-style US outline with animated nodes
+const dc = document.getElementById('dist-canvas');
+if (dc) {
+  const dctx = dc.getContext('2d');
+  function resizeDist() { dc.width = dc.offsetWidth; dc.height = dc.offsetHeight; }
+  resizeDist();
+  window.addEventListener('resize', resizeDist);
+
+  // US state outline path (simplified, scales to canvas)
+  // Normalized 0-1 coordinates tracing continental US border
+  const usBorder = [
+    [0.08,0.32],[0.10,0.20],[0.15,0.18],[0.18,0.12],[0.22,0.10],[0.28,0.10],
+    [0.30,0.08],[0.34,0.10],[0.38,0.08],[0.42,0.10],[0.46,0.08],[0.50,0.10],
+    [0.54,0.08],[0.58,0.10],[0.62,0.08],[0.66,0.10],[0.68,0.12],[0.72,0.14],
+    [0.76,0.16],[0.80,0.20],[0.84,0.22],[0.86,0.26],[0.88,0.32],[0.90,0.36],
+    [0.92,0.40],[0.90,0.44],[0.88,0.48],[0.86,0.52],[0.84,0.56],[0.82,0.60],
+    [0.80,0.64],[0.78,0.68],[0.76,0.72],[0.74,0.76],[0.72,0.80],[0.68,0.82],
+    [0.64,0.84],[0.60,0.86],[0.56,0.88],[0.52,0.90],[0.48,0.90],[0.44,0.88],
+    [0.40,0.86],[0.36,0.86],[0.32,0.88],[0.28,0.88],[0.24,0.86],[0.22,0.82],
+    [0.20,0.78],[0.18,0.74],[0.16,0.70],[0.14,0.66],[0.12,0.62],[0.10,0.58],
+    [0.08,0.52],[0.06,0.46],[0.06,0.40],[0.07,0.36],[0.08,0.32]
+  ];
+
+  // Major distribution hub cities with accurate relative positions
+  const hubs = [
+    {rx:0.13,ry:0.28,label:'SEA',size:3},{rx:0.10,ry:0.46,label:'SF',size:3.5},
+    {rx:0.12,ry:0.60,label:'LA',size:4.5},{rx:0.22,ry:0.56,label:'PHX',size:3},
+    {rx:0.30,ry:0.34,label:'DEN',size:3},{rx:0.27,ry:0.50,label:'SLC',size:2.5},
+    {rx:0.42,ry:0.62,label:'DAL',size:4},{rx:0.38,ry:0.46,label:'KC',size:3},
+    {rx:0.48,ry:0.34,label:'CHI',size:4.5},{rx:0.50,ry:0.26,label:'MSP',size:3},
+    {rx:0.56,ry:0.44,label:'IND',size:3},{rx:0.58,ry:0.56,label:'ATL',size:4},
+    {rx:0.62,ry:0.68,label:'TPA',size:3.5},{rx:0.66,ry:0.76,label:'MIA',size:3.5},
+    {rx:0.64,ry:0.40,label:'CLV',size:3},{rx:0.68,ry:0.32,label:'NYC',size:5},
+    {rx:0.72,ry:0.28,label:'BOS',size:3.5},{rx:0.66,ry:0.44,label:'PHL',size:3.5},
+    {rx:0.64,ry:0.52,label:'RDU',size:2.5},{rx:0.58,ry:0.34,label:'PIT',size:2.5},
+    {rx:0.44,ry:0.52,label:'MEM',size:3},{rx:0.46,ry:0.40,label:'STL',size:3},
+    {rx:0.42,ry:0.72,label:'HOU',size:4}
+  ];
+
+  // Ripple effects
+  const ripples = [];
+  function addRipple() {
+    const hub = hubs[Math.floor(Math.random()*hubs.length)];
+    ripples.push({ rx: hub.rx, ry: hub.ry, r: 0, maxR: 28, alpha: 0.6 });
+  }
+  setInterval(addRipple, 900);
+
+  // Animated packets traveling between hubs
+  const packets = [];
+  function addPacket() {
+    const a = hubs[Math.floor(Math.random()*hubs.length)];
+    let b;
+    do { b = hubs[Math.floor(Math.random()*hubs.length)]; } while (b===a);
+    packets.push({ ax:a.rx,ay:a.ry, bx:b.rx,by:b.ry, t:0, speed:0.008+Math.random()*0.006 });
+  }
+  for(let i=0;i<4;i++) addPacket();
+  setInterval(addPacket, 1800);
+
+  let pulseT = 0;
+  (function drawDist() {
+    if(!dc.width) { requestAnimationFrame(drawDist); return; }
+    const W = dc.width, H = dc.height;
+    dctx.clearRect(0,0,W,H);
+    pulseT += 0.018;
+
+    // Draw US border shape (filled, subtle)
+    dctx.beginPath();
+    usBorder.forEach(([rx,ry],i) => {
+      const x=rx*W, y=ry*H;
+      i===0 ? dctx.moveTo(x,y) : dctx.lineTo(x,y);
+    });
+    dctx.closePath();
+    dctx.fillStyle = 'rgba(75,184,212,0.04)';
+    dctx.fill();
+    dctx.strokeStyle = 'rgba(75,184,212,0.18)';
+    dctx.lineWidth = 1.2;
+    dctx.stroke();
+
+    // Hub connection lines (only nearby hubs)
+    const ns = hubs.map(h => ({...h, x:h.rx*W, y:h.ry*H}));
+    ns.forEach((a,i) => ns.slice(i+1).forEach(b => {
+      const d = Math.hypot(a.x-b.x, a.y-b.y);
+      if(d < W*0.28) {
+        dctx.beginPath(); dctx.moveTo(a.x,a.y); dctx.lineTo(b.x,b.y);
+        dctx.strokeStyle = `rgba(75,184,212,${0.07*(1-d/(W*0.28))})` ;
+        dctx.lineWidth = 0.6; dctx.stroke();
+      }
+    }));
+
+    // Ripples
+    for(let i=ripples.length-1;i>=0;i--) {
+      const rp = ripples[i];
+      rp.r += 0.8; rp.alpha -= 0.015;
+      if(rp.alpha<=0){ ripples.splice(i,1); continue; }
+      dctx.beginPath();
+      dctx.arc(rp.rx*W, rp.ry*H, rp.r, 0, Math.PI*2);
+      dctx.strokeStyle = `rgba(75,184,212,${rp.alpha})`;
+      dctx.lineWidth = 0.8; dctx.stroke();
+    }
+
+    // Packets (traveling dots)
+    for(let i=packets.length-1;i>=0;i--) {
+      const pk = packets[i];
+      pk.t += pk.speed;
+      if(pk.t>=1){ packets.splice(i,1); continue; }
+      const x = (pk.ax + (pk.bx-pk.ax)*pk.t)*W;
+      const y = (pk.ay + (pk.by-pk.ay)*pk.t)*H;
+      dctx.beginPath(); dctx.arc(x,y,2.5,0,Math.PI*2);
+      dctx.fillStyle='rgba(232,184,75,0.85)'; dctx.fill();
+      // trail
+      const tx = (pk.ax + (pk.bx-pk.ax)*Math.max(0,pk.t-0.08))*W;
+      const ty = (pk.ay + (pk.by-pk.ay)*Math.max(0,pk.t-0.08))*H;
+      dctx.beginPath(); dctx.moveTo(tx,ty); dctx.lineTo(x,y);
+      dctx.strokeStyle='rgba(232,184,75,0.25)'; dctx.lineWidth=1.5; dctx.stroke();
+    }
+
+    // Hub nodes
+    ns.forEach((n,i) => {
+      const pulse = Math.sin(pulseT + i*0.5)*0.25+0.75;
+      const sz = (n.size||3)*pulse;
+      // glow
+      dctx.beginPath(); dctx.arc(n.x,n.y,sz+6,0,Math.PI*2);
+      dctx.fillStyle=`rgba(75,184,212,${0.05*pulse})`; dctx.fill();
+      // dot
+      dctx.beginPath(); dctx.arc(n.x,n.y,sz,0,Math.PI*2);
+      dctx.fillStyle=`rgba(75,184,212,${0.75*pulse})`; dctx.fill();
+      // label
+      dctx.fillStyle=`rgba(240,244,248,${0.35*pulse})`;
+      dctx.font=`${Math.min(7,W*0.018)}px JetBrains Mono, monospace`;
+      dctx.textAlign='center';
+      dctx.fillText(n.label, n.x, n.y - sz - 4);
+    });
+
+    requestAnimationFrame(drawDist);
+  })();
+}
+
+// ACTIVITY FEED
+const feedItems = [
+  { tag:'ORDER', cls:'tag-order', msg:'RX-2026-00449 · semaglutide 1mg/0.75ml · routed → iRemedy Direct' },
+  { tag:'COO', cls:'tag-coo', msg:'Ozempic NDC 0169-4135 · API origin: CN (72%) — flagged' },
+  { tag:'INTAKE', cls:'tag-intake', msg:'Manufacturer onboard: Vibrix Pharmacy · IVIG intake processing' },
+  { tag:'ROUTE', cls:'tag-route', msg:'Order fulfilled · cold chain confirmed · ETA 04-14-2026' },
+  { tag:'ALERT', cls:'tag-alert', msg:'Hormuz disruption risk — 89 NDCs affected · escalated to TradeSpy' },
+  { tag:'ORDER', cls:'tag-order', msg:'RX-2026-00451 · amoxicillin 500mg · DSCSA serialized ✓' },
+  { tag:'COO', cls:'tag-coo', msg:'Metformin HCl NDC 0093-1048 · API: India (Aurobindo) — verified' },
+  { tag:'ROUTE', cls:'tag-route', msg:'License verified: DEA 012-BX-7782 · order released' },
+  { tag:'INTAKE', cls:'tag-intake', msg:'New manufacturer intake: 111 Biopharmaceuticals — IVIG protocol' },
+  { tag:'ORDER', cls:'tag-order', msg:'RX-2026-00453 · epinephrine 1mg/mL · urgent routing active' },
+];
+let feedIdx = 0;
+const feedBody = document.getElementById('feed-body');
+function addFeedItem() {
+  if (!feedBody) return;
+  const item = feedItems[feedIdx % feedItems.length];
+  feedIdx++;
+  const now = new Date();
+  const ts = now.getHours().toString().padStart(2,'0')+':'+now.getMinutes().toString().padStart(2,'0')+':'+now.getSeconds().toString().padStart(2,'0');
+  const el = document.createElement('div');
+  el.className = 'feed-item';
+  el.style.animationDelay = '0s';
+  el.innerHTML = `<span class="feed-ts">${ts}</span><span class="feed-tag ${item.cls}">${item.tag}</span><span class="feed-msg">${item.msg}</span>`;
+  if (feedBody.children.length >= 7) feedBody.removeChild(feedBody.firstChild);
+  feedBody.appendChild(el);
+}
+// Initial items
+for(let i=0;i<5;i++) addFeedItem();
+setInterval(addFeedItem, 2800);
+
+// SCROLL REVEAL
+const revealEls = document.querySelectorAll('.reveal, .reveal-left');
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('up'); revealObs.unobserve(e.target); }});
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+revealEls.forEach(el => revealObs.observe(el));
+
+// NAV ACTIVE
+const navLinks = document.querySelectorAll('.nav-links a');
+const sections = ['problem','platform','distribution','technology','logistics','government'].map(id => document.getElementById(id)).filter(Boolean);
+const navObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      navLinks.forEach(a => a.classList.remove('active'));
+      const a = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+      if(a) a.classList.add('active');
+    }
+  });
+}, { threshold: 0.3 });
+sections.forEach(s => navObs.observe(s));
+navLinks.forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if(t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
+</body>
+</html>
