@@ -2568,6 +2568,12 @@ navLinks.forEach(a => {
 
   <!-- ====== IP PAGE ====== -->
   <style id="ip-styles">
+  /* Patents page CSS — fully scoped under #ip-page */
+  #ip-page { display: none; position: relative; }
+  #ip-page.active { display: block; }
+  #ip-page canvas { display: none !important; }
+  #ip-page > nav { display: none !important; }
+
   /* Patents page — fully scoped under #ip-page */
   #ip-page { display: none; position: relative; }
   #ip-page.active { display: block; }
@@ -2606,12 +2612,12 @@ navLinks.forEach(a => {
       overflow-x: hidden;
       cursor: none;
     }
-@media (hover: none){
-      body { cursor: auto; }
-      #cursor, #cursor-ring { display: none; }
+@media (hover: none) {
+      #ip-page body{ cursor: auto; }
+      #ip-page #cursor, #ip-page #cursor-ring{ display: none; }
     }
 /* CUSTOM CURSOR */
-    #cursor{
+    #ip-page #cursor{
       position: fixed; z-index: 9999; pointer-events: none;
       width: 12px; height: 12px;
       background: var(--cyan);
@@ -2631,7 +2637,7 @@ navLinks.forEach(a => {
 #ip-page body:has(a:hover) #cursor, #ip-page body:has(button:hover) #cursor{ width: 20px; height: 20px; background: var(--orange); }
 #ip-page body:has(a:hover) #cursor-ring, #ip-page body:has(button:hover) #cursor-ring{ width: 50px; height: 50px; }
 /* GRID BACKGROUND */
-    body::before{
+    #ip-page body::before{
       content: '';
       position: fixed; inset: 0; z-index: 0; pointer-events: none;
       background-image:
@@ -2640,9 +2646,9 @@ navLinks.forEach(a => {
       background-size: 60px 60px;
     }
 /* PARTICLE CANVAS */
-    #particle-canvas{ position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.4; }
+    #ip-page #particle-canvas{ position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.4; }
 /* NAV */
-    nav{
+    #ip-page nav{
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       padding: 1.2rem 5vw;
       display: flex; justify-content: space-between; align-items: center;
@@ -2671,9 +2677,9 @@ navLinks.forEach(a => {
       letter-spacing: 0.15em;
     }
 #ip-page .nav-count strong{ color: var(--gold); }
-@media (max-width: 640px){ .nav-links { display: none; } .nav-count { display: none; } }
+@media (max-width: 640px) { #ip-page .nav-links{ display: none; } #ip-page .nav-count{ display: none; } }
 /* HERO */
-    #hero{
+    #ip-page #hero{
       position: relative; min-height: 100vh;
       display: flex; align-items: center; justify-content: center;
       padding: 8rem 5vw 6rem; text-align: center; overflow: hidden;
@@ -2725,7 +2731,7 @@ navLinks.forEach(a => {
       animation: scrollPulse 1.5s ease-in-out infinite;
     }
 /* OVERVIEW */
-    #overview{
+    #ip-page #overview{
       position: relative; z-index: 1;
       padding: 6rem 5vw; max-width: 1200px; margin: 0 auto;
     }
@@ -2740,7 +2746,7 @@ navLinks.forEach(a => {
 #ip-page .overview-title span{ color: var(--blue); }
 #ip-page .overview-body{ font-size: 1rem; color: var(--text-2); max-width: 560px; line-height: 1.8; margin-bottom: 3rem; }
 /* PATENT CARD GRID */
-    .patent-grid{
+    #ip-page .patent-grid{
       display: grid; grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
       gap: 1rem;
     }
@@ -2770,7 +2776,7 @@ navLinks.forEach(a => {
 #ip-page .badge-licensed{ background: rgba(245,181,62,0.1); color: var(--gold); border: 1px solid rgba(245,181,62,0.2); }
 #ip-page .badge-granted{ background: var(--blue-dim); color: var(--cyan); border: 1px solid rgba(0,212,255,0.2); }
 /* DEEP DIVE SECTIONS */
-    #patents{ position: relative; z-index: 1; padding: 4rem 5vw; }
+    #ip-page #patents{ position: relative; z-index: 1; padding: 4rem 5vw; }
 #ip-page .patents-header{ max-width: 1200px; margin: 0 auto 4rem; }
 #ip-page .patent-section-divider{
       max-width: 1200px; margin: 4rem auto;
@@ -2786,7 +2792,7 @@ navLinks.forEach(a => {
       display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
       margin-top: 1.5rem;
     }
-@media (max-width: 860px){ .patent-deep-header { grid-template-columns: 1fr; gap: 2rem; } }
+@media (max-width: 860px) { #ip-page .patent-deep-header{ grid-template-columns: 1fr; gap: 2rem; } }
 #ip-page .patent-deep-num{
       font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.2em;
       color: var(--text-3); margin-bottom: 0.75rem;
@@ -2807,7 +2813,7 @@ navLinks.forEach(a => {
 #ip-page .patent-meta-label{ font-size: 0.6rem; letter-spacing: 0.15em; color: var(--text-3); text-transform: uppercase; margin-bottom: 0.25rem; }
 #ip-page .patent-meta-val{ font-family: var(--mono); font-size: 0.8rem; }
 /* STAGE FLOW */
-    .stage-flow{
+    #ip-page .stage-flow{
       display: flex; align-items: center; gap: 0.5rem;
       margin-bottom: 2rem; flex-wrap: wrap;
     }
@@ -2829,14 +2835,14 @@ navLinks.forEach(a => {
 #ip-page .stage-items li{ font-size: 0.72rem; color: var(--text-2); padding: 0.15rem 0; }
 #ip-page .stage-items li::before{ content: '→ '; color: var(--cyan); }
 /* SVG DIAGRAM WRAPPER */
-    .svg-diagram{
+    #ip-page .svg-diagram{
       width: 100%; background: var(--bg-2); border-radius: 12px;
       border: 1px solid rgba(26,108,255,0.12); overflow: hidden;
       margin-top: 0.5rem;
     }
 #ip-page .svg-diagram svg{ display: block; width: 100%; }
 /* SVG animation classes */
-    .svg-diagram.active .draw-path{ stroke-dashoffset: 0 !important; }
+    #ip-page .svg-diagram.active .draw-path{ stroke-dashoffset: 0 !important; }
 #ip-page .svg-diagram.active .fade-in{ opacity: 1 !important; }
 #ip-page .svg-diagram.active .slide-up{ transform: translateY(0) !important; opacity: 1 !important; }
 #ip-page .svg-diagram.active .pulse-node{ animation: svgPulse 1.5s ease-in-out infinite !important; }
@@ -2845,7 +2851,7 @@ navLinks.forEach(a => {
 #ip-page .svg-diagram.active .orbit{ animation: svgOrbit 3s linear infinite !important; }
 #ip-page .svg-diagram.active .belt-item{ animation: beltMove 2s linear infinite !important; }
 /* TECH STACK */
-    #tech-stack{
+    #ip-page #tech-stack{
       position: relative; z-index: 1;
       padding: 6rem 5vw; max-width: 1200px; margin: 0 auto;
     }
@@ -2863,7 +2869,7 @@ navLinks.forEach(a => {
 #ip-page .tech-name{ font-weight: 700; margin-bottom: 0.5rem; }
 #ip-page .tech-desc{ font-size: 0.82rem; color: var(--text-2); line-height: 1.7; }
 /* TIMELINE */
-    #timeline{
+    #ip-page #timeline{
       position: relative; z-index: 1;
       padding: 6rem 5vw; max-width: 1200px; margin: 0 auto;
     }
@@ -2893,7 +2899,7 @@ navLinks.forEach(a => {
 #ip-page .timeline-title{ font-weight: 600; font-size: 1rem; margin-bottom: 0.2rem; }
 #ip-page .timeline-num{ font-size: 0.8rem; color: var(--text-3); font-family: var(--mono); }
 /* HORIZON */
-    .horizon-grid{
+    #ip-page .horizon-grid{
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
       gap: 1rem;
@@ -2976,7 +2982,7 @@ navLinks.forEach(a => {
       margin-top: 1.1rem;
     }
 /* FOOTER */
-    footer{
+    #ip-page footer{
       position: relative; z-index: 1;
       text-align: center; padding: 4rem 5vw;
       border-top: 1px solid rgba(26,108,255,0.08);
@@ -2984,10 +2990,10 @@ navLinks.forEach(a => {
 #ip-page .footer-brand{ font-family: var(--mono); font-size: 1.1rem; color: var(--cyan); margin-bottom: 0.75rem; letter-spacing: 0.1em; }
 #ip-page .footer-copy{ font-size: 0.75rem; color: var(--text-3); }
 /* SCROLL REVEAL */
-    .reveal{ opacity: 0; transform: translateY(20px); transition: opacity 0.7s, transform 0.7s; }
+    #ip-page .reveal{ opacity: 0; transform: translateY(20px); transition: opacity 0.7s, transform 0.7s; }
 #ip-page .reveal.up{ opacity: 1; transform: none; }
 /* LIGHTBOX */
-    #lightbox{
+    #ip-page #lightbox{
       position: fixed; inset: 0; z-index: 1000;
       background: rgba(4,8,15,0.95); display: none;
       align-items: center; justify-content: center; cursor: zoom-out;
@@ -3028,6 +3034,8 @@ navLinks.forEach(a => {
     }
 
   
+  
+
   
 
   #ip-page .back-btn {
