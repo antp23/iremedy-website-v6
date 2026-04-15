@@ -623,73 +623,73 @@ footer {
     @media (max-width: 640px) { .nav-links { display: none; } .nav-count { display: none; } }
 
     /* HERO */
-    #hero {
+    #ip-hero {
       position: relative; min-height: 100vh;
       display: flex; align-items: center; justify-content: center;
       padding: 8rem 5vw 6rem; text-align: center; overflow: hidden;
     }
-    .hero-glow {
+    .ip-hero-glow {
       position: absolute; width: 800px; height: 800px;
       background: radial-gradient(circle, rgba(26,108,255,0.08) 0%, transparent 70%);
       top: 50%; left: 50%; transform: translate(-50%, -50%);
       pointer-events: none;
     }
-    .hero-content { position: relative; z-index: 1; max-width: 900px; }
-    .hero-label {
+    .ip-hero-content { position: relative; z-index: 1; max-width: 900px; }
+    .ip-hero-label {
       font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.25em;
       color: var(--cyan); text-transform: uppercase; margin-bottom: 1.5rem;
       opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
     }
-    .hero-title {
+    .ip-hero-title {
       font-size: clamp(2.8rem, 7vw, 6rem); font-weight: 700; line-height: 1.05;
       letter-spacing: -0.02em; margin-bottom: 1.5rem;
       opacity: 0; animation: fadeUp 0.8s 0.4s forwards;
     }
-    .hero-title span { color: var(--blue); }
-    .hero-sub {
+    .ip-hero-title span { color: var(--blue); }
+    .ip-hero-sub {
       font-size: clamp(0.95rem, 2.5vw, 1.1rem); color: var(--text-2); max-width: 600px; margin: 0 auto 3rem;
       line-height: 1.7; opacity: 0; animation: fadeUp 0.8s 0.6s forwards;
     }
-    .hero-stats {
+    .ip-hero-stats {
       display: flex; gap: clamp(1.5rem, 4vw, 3rem); justify-content: center; flex-wrap: wrap;
       opacity: 0; animation: fadeUp 0.8s 0.8s forwards;
     }
-    .hero-stat { text-align: center; }
-    .hero-stat-num {
+    .ip-hero-stat { text-align: center; }
+    .ip-hero-stat-num {
       font-family: var(--mono); font-size: 3rem; font-weight: 700;
       color: var(--cyan); line-height: 1;
     }
-    .hero-stat-label {
+    .ip-hero-stat-label {
       font-size: 0.75rem; color: var(--text-3); letter-spacing: 0.15em;
       text-transform: uppercase; margin-top: 0.3rem;
     }
-    .scroll-hint {
+    .ip-scroll-hint {
       position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
       display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
       opacity: 0; animation: fadeUp 0.8s 1.2s forwards;
     }
-    .scroll-hint span { font-size: 0.65rem; letter-spacing: 0.2em; color: var(--text-3); text-transform: uppercase; }
-    .scroll-line {
+    .ip-scroll-hint span { font-size: 0.65rem; letter-spacing: 0.2em; color: var(--text-3); text-transform: uppercase; }
+    .ip-scroll-line {
       width: 1px; height: 40px;
       background: linear-gradient(to bottom, var(--cyan), transparent);
       animation: scrollPulse 1.5s ease-in-out infinite;
     }
 
     /* OVERVIEW */
-    #overview {
+    #ip-overview {
       position: relative; z-index: 1;
       padding: 6rem 5vw; max-width: 1200px; margin: 0 auto;
     }
-    .section-label {
+    .ip-section-label {
       font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.25em;
       color: var(--cyan); text-transform: uppercase; margin-bottom: 1rem;
     }
-    .overview-title {
+    .ip-overview-title {
       font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700; line-height: 1.15;
       letter-spacing: -0.02em; margin-bottom: 1.5rem;
     }
-    .overview-title span { color: var(--blue); }
-    .overview-body { font-size: 1rem; color: var(--text-2); max-width: 560px; line-height: 1.8; margin-bottom: 3rem; }
+    .ip-overview-title span { color: var(--blue); }
+    .ip-overview-body { font-size: 1rem; color: var(--text-2); max-width: 560px; line-height: 1.8; margin-bottom: 3rem; }
 
     /* PATENT CARD GRID */
     .patent-grid {
@@ -723,7 +723,7 @@ footer {
     .badge-granted { background: var(--blue-dim); color: var(--cyan); border: 1px solid rgba(0,212,255,0.2); }
 
     /* DEEP DIVE SECTIONS */
-    #patents { position: relative; z-index: 1; padding: 4rem 5vw; }
+    #ip-patents { position: relative; z-index: 1; padding: 4rem 5vw; }
     .patents-header { max-width: 1200px; margin: 0 auto 4rem; }
 
     .patent-section-divider {
@@ -736,7 +736,7 @@ footer {
     .patent-deep {
       max-width: 1200px; margin: 0 auto;
     }
-    .patent-deep > p.section-label { margin-bottom: 0.5rem; }
+    .patent-deep > p.ip-section-label { margin-bottom: 0.5rem; }
     .patent-deep-header {
       display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
       margin-top: 1.5rem;
@@ -804,7 +804,7 @@ footer {
     .svg-diagram.active .belt-item { animation: beltMove 2s linear infinite !important; }
 
     /* TECH STACK */
-    #tech-stack {
+    #ip-tech-stack {
       position: relative; z-index: 1;
       padding: 6rem 5vw; max-width: 1200px; margin: 0 auto;
     }
@@ -1615,31 +1615,31 @@ navLinks.forEach(a => {
     <button class="back-btn" onclick="hideIPPage()">&#8592; Back to iRemedy.com</button>
 
   <!-- HERO -->
-  <section id="hero">
-    <div class="hero-glow"></div>
-    <div class="hero-content">
-      <div class="hero-label">iRemedy Healthcare Companies, Inc. · US Patent Portfolio</div>
-      <h1 class="hero-title">The Machine<br>Under the <span>Market</span></h1>
-      <p class="hero-sub">Ten granted U.S. patents. The AI infrastructure layer of the healthcare supply chain — built to automate what the industry still does by hand.</p>
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <div class="hero-stat-num"><span class="count-up" data-target="10">0</span></div>
-          <div class="hero-stat-label">Patents Granted</div>
+  <section id="ip-hero">
+    <div class="ip-hero-glow"></div>
+    <div class="ip-hero-content">
+      <div class="ip-hero-label">iRemedy Healthcare Companies, Inc. · US Patent Portfolio</div>
+      <h1 class="ip-hero-title">The Machine<br>Under the <span>Market</span></h1>
+      <p class="ip-hero-sub">Ten granted U.S. patents. The AI infrastructure layer of the healthcare supply chain — built to automate what the industry still does by hand.</p>
+      <div class="ip-hero-stats">
+        <div class="ip-hero-stat">
+          <div class="ip-hero-stat-num"><span class="count-up" data-target="10">0</span></div>
+          <div class="ip-hero-stat-label">Patents Granted</div>
         </div>
 
       </div>
     </div>
-    <div class="scroll-hint">
+    <div class="ip-scroll-hint">
       <span>Scroll</span>
-      <div class="scroll-line"></div>
+      <div class="ip-scroll-line"></div>
     </div>
   </section>
 
   <!-- OVERVIEW -->
-  <section id="overview">
-    <p class="section-label reveal">The Portfolio</p>
-    <h2 class="overview-title reveal">Not Software.<br><span>Patented Infrastructure.</span></h2>
-    <p class="overview-body reveal">Co-invented by Tony Paquin and Jim Harding — the inventor behind Amazon Marketplace's original reseller technology — this portfolio covers every layer of the AI automation stack. From website structure identification to intelligent data reacquisition, the architecture is complete and protected.</p>
+  <section id="ip-overview">
+    <p class="ip-section-label reveal">The Portfolio</p>
+    <h2 class="ip-overview-title reveal">Not Software.<br><span>Patented Infrastructure.</span></h2>
+    <p class="ip-overview-body reveal">Co-invented by Tony Paquin and Jim Harding — the inventor behind Amazon Marketplace's original reseller technology — this portfolio covers every layer of the AI automation stack. From website structure identification to intelligent data reacquisition, the architecture is complete and protected.</p>
     <div class="patent-grid reveal">
       <!-- Owned Patents -->
       <a class="patent-card" href="#p11983236">
@@ -1717,18 +1717,18 @@ navLinks.forEach(a => {
   </section>
 
   <!-- DEEP DIVE SECTION -->
-  <section id="patents">
+  <section id="ip-patents">
     <div class="patents-header">
-      <p class="section-label reveal">Deep Dive</p>
-      <h2 class="overview-title reveal">Inside the<br><span>IP Stack</span></h2>
-      <p class="overview-body reveal">Each patent covers a distinct layer of the automation architecture. Together, they define end-to-end AI-driven supply chain execution — from first-touch website parsing to self-healing, self-updating intelligence.</p>
+      <p class="ip-section-label reveal">Deep Dive</p>
+      <h2 class="ip-overview-title reveal">Inside the<br><span>IP Stack</span></h2>
+      <p class="ip-overview-body reveal">Each patent covers a distinct layer of the automation architecture. Together, they define end-to-end AI-driven supply chain execution — from first-touch website parsing to self-healing, self-updating intelligence.</p>
     </div>
 
     <!-- ═══════════════════════════════════════════════════════ -->
     <!-- PATENT 1: 11,983,236 — Failure Detection & Recovery -->
     <!-- ═══════════════════════════════════════════════════════ -->
     <div class="patent-deep reveal" id="p11983236">
-      <p class="section-label">US Patent 11,983,236 · Granted May 2024</p>
+      <p class="ip-section-label">US Patent 11,983,236 · Granted May 2024</p>
       <div class="patent-deep-header">
         <div>
           <div class="patent-deep-num">PATENT 01 OF 10</div>
@@ -1831,7 +1831,7 @@ navLinks.forEach(a => {
     <!-- PATENT 2: 11,860,967 — Descriptor Normalization -->
     <!-- ═══════════════════════════════════════════════════════ -->
     <div class="patent-deep reveal" id="p11860967">
-      <p class="section-label">US Patent 11,860,967 · Granted January 2024</p>
+      <p class="ip-section-label">US Patent 11,860,967 · Granted January 2024</p>
       <div class="patent-deep-header">
         <div>
           <div class="patent-deep-num">PATENT 02 OF 10</div>
@@ -1942,7 +1942,7 @@ navLinks.forEach(a => {
     <!-- PATENT 3: 12,332,966 — Task Decomposition -->
     <!-- ═══════════════════════════════════════════════════════ -->
     <div class="patent-deep reveal" id="p12332966">
-      <p class="section-label">US Patent 12,332,966 · Granted June 2025</p>
+      <p class="ip-section-label">US Patent 12,332,966 · Granted June 2025</p>
       <div class="patent-deep-header">
         <div>
           <div class="patent-deep-num">PATENT 03 OF 10</div>
@@ -2046,7 +2046,7 @@ navLinks.forEach(a => {
     <!-- PATENT 4: 12,468,774 — Intelligent Data Reacquisition -->
     <!-- ═══════════════════════════════════════════════════════ -->
     <div class="patent-deep reveal" id="p12468774">
-      <p class="section-label">US Patent 12,468,774 · Granted November 2025</p>
+      <p class="ip-section-label">US Patent 12,468,774 · Granted November 2025</p>
       <div class="patent-deep-header">
         <div>
           <div class="patent-deep-num">PATENT 04 OF 10</div>
@@ -2152,7 +2152,7 @@ navLinks.forEach(a => {
     <!-- PATENT 5: 11,640,440 — Website Structure Identification -->
     <!-- ═══════════════════════════════════════════════════════ -->
     <div class="patent-deep reveal" id="p11640440">
-      <p class="section-label">US Patent 11,640,440 · Granted May 2023</p>
+      <p class="ip-section-label">US Patent 11,640,440 · Granted May 2023</p>
       <div class="patent-deep-header">
         <div>
           <div class="patent-deep-num">PATENT 05 OF 10</div>
@@ -2266,7 +2266,7 @@ navLinks.forEach(a => {
     <!-- PATENT 6: 11,416,575 — Multi-Platform Task Execution -->
     <!-- ═══════════════════════════════════════════════════════ -->
     <div class="patent-deep reveal" id="p11416575">
-      <p class="section-label">US Patent 11,416,575 · Granted August 2022</p>
+      <p class="ip-section-label">US Patent 11,416,575 · Granted August 2022</p>
       <div class="patent-deep-header">
         <div>
           <div class="patent-deep-num">PATENT 06 OF 10</div>
@@ -2364,7 +2364,7 @@ navLinks.forEach(a => {
     <!-- PATENT 7: 11,568,019 — Automation Process Execution -->
     <!-- ═══════════════════════════════════════════════════════ -->
     <div class="patent-deep reveal" id="p11568019">
-      <p class="section-label">US Patent 11,568,019 · Granted January 2023</p>
+      <p class="ip-section-label">US Patent 11,568,019 · Granted January 2023</p>
       <div class="patent-deep-header">
         <div>
           <div class="patent-deep-num">PATENT 07 OF 10</div>
@@ -2465,7 +2465,7 @@ navLinks.forEach(a => {
 
     <!-- PATENT 8: 11,580,190 — Discrete Goal Task Machine -->
     <div class="patent-deep reveal" id="p11580190">
-      <p class="section-label">US Patent 11,580,190 · Granted February 2023</p>
+      <p class="ip-section-label">US Patent 11,580,190 · Granted February 2023</p>
       <div class="patent-deep-header">
         <div>
           <div class="patent-deep-num">PATENT 08 OF 10</div>
@@ -2575,7 +2575,7 @@ navLinks.forEach(a => {
 
     <!-- PATENT 9: 12,259,940 — Data Description Model Builder -->
     <div class="patent-deep reveal" id="p12259940">
-      <p class="section-label">US Patent 12,259,940 · Granted March 2025</p>
+      <p class="ip-section-label">US Patent 12,259,940 · Granted March 2025</p>
       <div class="patent-deep-header">
         <div>
           <div class="patent-deep-num">PATENT 09 OF 10</div>
@@ -2661,7 +2661,7 @@ navLinks.forEach(a => {
 
     <!-- PATENT 10: 12,326,913 — Goal-Based Task Execution -->
     <div class="patent-deep reveal" id="p12326913">
-      <p class="section-label">US Patent 12,326,913 · Granted June 2025</p>
+      <p class="ip-section-label">US Patent 12,326,913 · Granted June 2025</p>
       <div class="patent-deep-header">
         <div>
           <div class="patent-deep-num">PATENT 10 OF 10</div>
@@ -2757,10 +2757,10 @@ navLinks.forEach(a => {
   </section><!-- end #patents -->
 
   <!-- TECH STACK -->
-  <section id="tech-stack">
-    <p class="section-label reveal">What the Patents Enable</p>
-    <h2 class="overview-title reveal">From IP to<br><span>Infrastructure</span></h2>
-    <p class="overview-body reveal">These patents don't sit in a drawer. They are live — powering production platforms that move real products through the U.S. healthcare supply chain today.</p>
+  <section id="ip-tech-stack">
+    <p class="ip-section-label reveal">What the Patents Enable</p>
+    <h2 class="ip-overview-title reveal">From IP to<br><span>Infrastructure</span></h2>
+    <p class="ip-overview-body reveal">These patents don't sit in a drawer. They are live — powering production platforms that move real products through the U.S. healthcare supply chain today.</p>
     <div class="tech-grid reveal">
       <div class="tech-item">
         <span class="tech-icon">🧠</span>
@@ -2777,10 +2777,10 @@ navLinks.forEach(a => {
   </section>
 
   <!-- HORIZON SECTION -->
-  <section id="horizon" style="position:relative;z-index:1;padding:6rem 5vw;max-width:1200px;margin:0 auto;">
-    <p class="section-label reveal">What Comes Next</p>
-    <h2 class="overview-title reveal">The World Is Catching Up<br><span>To What We Already Built</span></h2>
-    <p class="overview-body reveal" style="max-width:680px;">AI is no longer a roadmap item. It's a tectonic shift — and the companies that will define it don't just use AI, they own the infrastructure it runs on. These patents were filed in 2021. What they protect has only grown more valuable since.</p>
+  <section id="ip-horizon" style="position:relative;z-index:1;padding:6rem 5vw;max-width:1200px;margin:0 auto;">
+    <p class="ip-section-label reveal">What Comes Next</p>
+    <h2 class="ip-overview-title reveal">The World Is Catching Up<br><span>To What We Already Built</span></h2>
+    <p class="ip-overview-body reveal" style="max-width:680px;">AI is no longer a roadmap item. It's a tectonic shift — and the companies that will define it don't just use AI, they own the infrastructure it runs on. These patents were filed in 2021. What they protect has only grown more valuable since.</p>
 
     <div class="horizon-grid reveal">
 
@@ -2864,23 +2864,31 @@ navLinks.forEach(a => {
 
   <!-- IP Page JS -->
   <script>
+  // IDs of main site sections to hide when IP page is shown
+  const MAIN_SECTION_IDS = ['hero','problem','platform','distribution','technology','logistics','government','contact'];
+
   function showIPPage() {
+    // Hide main site sections by known ID
+    MAIN_SECTION_IDS.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.style.display = 'none';
+    });
     document.getElementById('ip-page').classList.add('active');
     document.getElementById('nav-ip-link').classList.add('active');
-    // Hide main site sections
-    document.querySelectorAll('body > section, body > div:not(#cursor):not(#cursor-ring):not(#ip-page)').forEach(el => {
-      if (el.id !== 'ip-page') el.style.display = 'none';
-    });
     window.scrollTo(0, 0);
-    initPatentsPage();
+    if (!window._patentsInitialized) {
+      initPatentsPage();
+      window._patentsInitialized = true;
+    }
   }
 
   function hideIPPage() {
+    MAIN_SECTION_IDS.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.style.display = '';
+    });
     document.getElementById('ip-page').classList.remove('active');
     document.getElementById('nav-ip-link').classList.remove('active');
-    document.querySelectorAll('body > section, body > div:not(#cursor):not(#cursor-ring):not(#ip-page)').forEach(el => {
-      if (el.id !== 'ip-page') el.style.display = '';
-    });
     window.scrollTo(0, 0);
   }
 
